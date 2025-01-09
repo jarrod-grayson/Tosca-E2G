@@ -15,7 +15,7 @@
 param(
     # Mandatory parameters
     [string]$toscaServerUrl,
-    [string]$executionEnvironment = "Dex",
+    [string]$executionEnvironment = "ElasticExecutionGrid",
     [string]$projectName,
     [string]$events,
     [string]$eventsConfigFilePath,
