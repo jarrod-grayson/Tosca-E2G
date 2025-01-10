@@ -79,8 +79,6 @@ stages:
             -toscaServerUrl "http://localhost:80"
             -projectName "common_repository"
             -eventsConfigFilePath "testEvents.json"
-            -clientId "pLCD-s_I7UWieIPIHcAHVA"
-            -clientSecret "nvummXXOH0StbMwdHJBAyA0_Bfyb6z7Eqi6mO9hJpfwg"
             -executionEnvironment "ElasticExecutionGrid"
             -importResults "true"
             -creator "ToscaExecutionClient ADO Pipeline"
@@ -88,13 +86,16 @@ stages:
             -resultsFolderPath "C:/temp/results"
             -debug "true"
         displayName: 'Execute Tosca Elastic Execution Grid Event(s) via ToscaExecutionClient and Upload Results to qTest'
+  
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: 'Get-Content -Path "C:\\temp\\results\\results.xml" | Out-File -FilePath "C:\\temp\\results\\results_encode.xml" -Encoding ASCII'
 
       - task: PublishTestResults@2
+        displayName: 'Publish Test Results'
         inputs:
-          testResultsFormat: 'JUnit'
-          searchFolder: 'C:/temp/results'
-          testResultsFiles: 'TEST-Calc.CalculatorTests.xml'
-          testRunTitle: 'Publish JUNIT test results'
+          testResultsFiles: 'C:\temp\results\results_encode.xml'
 
 - stage: Deploy_to_Staging
   displayName: Deploy_to_Staging
