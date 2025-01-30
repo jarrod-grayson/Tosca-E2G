@@ -91,8 +91,9 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            $content = Get-Content -Path "C:\temp\results\results.xml" -Raw
-            $content | Set-Content -Path "C:\temp\results\results_encode.xml" -Encoding utf8NoBOM
+            $content = [System.IO.File]::ReadAllText("C:\temp\results\results.xml")
+            $utf8NoBomEncoding = New-Object System.Text.UTF8Encoding($false)  # $false prevents BOM
+            [System.IO.File]::WriteAllText("C:\temp\results\results_encode.xml", $content, $utf8NoBomEncoding)
 
       - task: PublishTestResults@2
         displayName: 'Publish Test Results'
