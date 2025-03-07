@@ -1,6 +1,6 @@
 [
     {
-      "eventId": "API Regression",
+      "eventId": "Web Regression",
       "parameters": {
         "Browser": "Chrome"
       },
