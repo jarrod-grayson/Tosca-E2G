@@ -1,11 +1,12 @@
 [
+    "Web Regression",
     {
-      "eventId": "API Regression",
-      "parameters": {
-        "Browser": "Chrome"
-      },
-      "characteristics": {
-        "Location": "Tosca-Demo-VM"
-      }
+        "eventId": "API Regression",
+        "parameters": {
+            "Browser": "Chrome"
+        },
+        "characteristics": {
+            "Location": "Tosca-Demo-VM"
+        }
     }
 ]
